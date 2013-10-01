@@ -2,6 +2,7 @@
 " Maintainer: 
 "   Colin Vinson
 "   http://colinvinson.com
+"   http://github.com/cvinson
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -24,6 +25,7 @@ filetype plugin indent on
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Show the ruler bar at the bottom of the screen
 set ruler
+set number
 
 " Set the height of the command bar
 set cmdheight=2
@@ -39,6 +41,3 @@ set noerrorbells
 set novisualbell
 set t_vb=
 set tm=500
-
-" Add a little margin to the left side.
-set foldcolumn=1
