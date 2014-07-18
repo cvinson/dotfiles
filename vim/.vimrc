@@ -87,4 +87,4 @@ set sidescrolloff=15
 set sidescroll=1
 
 " NERDTree settings
-noremap <leader>n :NERDTree ~/Dev/
+noremap <leader>n :NERDTree <CR>
