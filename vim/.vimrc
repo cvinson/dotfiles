@@ -19,7 +19,7 @@ set autoindent
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
-"set expandtab
+set expandtab
 set backspace=indent,eol,start
 
 filetype plugin indent on
@@ -75,9 +75,15 @@ let g:solarized_termcolors = 256
 let g:solarized_visibility = "high"
 let g:solarized_contrast = "high"
 let g:indent_guides_auto_colors = 0
-autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red
-autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=grey26
 colorscheme solarized
+
+set display+=lastline
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"" Aliases 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+:command W w
+:command Q q
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" Scrolling 
@@ -88,3 +94,12 @@ set sidescroll=1
 
 " NERDTree settings
 noremap <leader>n :NERDTree <CR>
+
+" FuzzyFinder settings
+noremap <leader>o :FufFile <CR>
+
+" Insert a single character in normal mode with <Space>
+:nmap <Space> i_<Esc>r
+
+" NERDTree Ignore some stuff.
+let NERDTreeIgnore=['\.pyc$', '\~$']
