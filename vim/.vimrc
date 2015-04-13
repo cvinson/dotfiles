@@ -19,11 +19,14 @@ set autoindent
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
-"set expandtab
+set expandtab
 set backspace=indent,eol,start
+set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
 
+filetype off
 filetype plugin indent on
 au BufNewFile,BufRead *.less set filetype=css
+au BufNewFile,BufRead *.coffee set filetype=coffee
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" Vundle 
@@ -43,6 +46,7 @@ Bundle 'nathanaelkane/vim-indent-guides'
 Bundle 'mileszs/ack.vim'
 Bundle 'nerdtree-ack'
 Bundle 'tpope/vim-fugitive'
+Bundle 'kchmck/vim-coffee-script'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" Vim UI 
