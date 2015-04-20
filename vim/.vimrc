@@ -16,9 +16,9 @@ set noswapfile
 
 set nocompatible
 set autoindent
-set tabstop=4
-set softtabstop=4
-set shiftwidth=4
+set tabstop=2
+set softtabstop=2
+set shiftwidth=2
 set expandtab
 set backspace=indent,eol,start
 set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
@@ -32,21 +32,29 @@ au BufNewFile,BufRead *.coffee set filetype=coffee
 "" Vundle 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+call vundle#begin()
 
-Bundle 'gmarik/vundle'
+Plugin 'gmarik/vundle'
 
-Bundle 'FuzzyFinder'
-Bundle 'tpope/vim-rails.git'
-Bundle 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
-Bundle 'Lokaltog/vim-easymotion'
-Bundle 'scrooloose/nerdtree'
-Bundle 'groenewege/vim-less'
-Bundle 'nathanaelkane/vim-indent-guides'
-Bundle 'mileszs/ack.vim'
-Bundle 'nerdtree-ack'
-Bundle 'tpope/vim-fugitive'
-Bundle 'kchmck/vim-coffee-script'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'justincampbell/vim-railscasts'
+Plugin 'L9'
+Plugin 'FuzzyFinder'
+Plugin 'tpope/vim-rails.git'
+Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
+Plugin 'Lokaltog/vim-easymotion'
+Plugin 'scrooloose/nerdtree'
+Plugin 'groenewege/vim-less'
+Plugin 'nathanaelkane/vim-indent-guides'
+Plugin 'mileszs/ack.vim'
+Plugin 'nerdtree-ack'
+Plugin 'tpope/vim-fugitive'
+Plugin 'kchmck/vim-coffee-script'
+Plugin 'thoughtbot/vim-rspec'
+Plugin 'jgdavey/tslime.vim'
+
+call vundle#end()            " required
+filetype plugin indent on    " required
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" Vim UI 
@@ -79,9 +87,16 @@ let g:solarized_termcolors = 256
 let g:solarized_visibility = "high"
 let g:solarized_contrast = "high"
 let g:indent_guides_auto_colors = 0
-colorscheme solarized
+colorscheme railscasts
 
 set display+=lastline
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"" Vim RSpec Bindings
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+nnoremap <Leader>t :call RunCurrentSpecFile()<CR>
+nnoremap <Leader>s :call RunNearestSpec()<CR>
+nnoremap <Leader>l :call RunLastSpec()<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" Aliases 
