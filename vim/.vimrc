@@ -38,8 +38,6 @@ Plugin 'gmarik/vundle'
 
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'justincampbell/vim-railscasts'
-Plugin 'L9'
-Plugin 'FuzzyFinder'
 Plugin 'tpope/vim-rails.git'
 Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 Plugin 'Lokaltog/vim-easymotion'
@@ -52,6 +50,10 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'thoughtbot/vim-rspec'
 Plugin 'jgdavey/tslime.vim'
+Plugin 'MarcWeber/vim-addon-mw-utils'
+Plugin 'tomtom/tlib_vim'
+Plugin 'garbas/vim-snipmate'
+Plugin 'honza/vim-snippets'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -87,7 +89,7 @@ let g:solarized_termcolors = 256
 let g:solarized_visibility = "high"
 let g:solarized_contrast = "high"
 let g:indent_guides_auto_colors = 0
-colorscheme railscasts
+colorscheme solarized
 
 set display+=lastline
 
@@ -113,9 +115,6 @@ set sidescroll=1
 
 " NERDTree settings
 noremap <leader>n :NERDTree <CR>
-
-" FuzzyFinder settings
-noremap <leader>o :FufFile <CR>
 
 " Insert a single character in normal mode with <Space>
 :nmap <Space> i_<Esc>r
