@@ -1,18 +1,19 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Maintainer: 
+" Maintainer:
 "   Colin Vinson
 "   http://colinvinson.com
 "   http://github.com/cvinson
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"" General 
+"" General
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " How many lines of history VIM will remember
 set history=1000
 set t_Co=256
 
 set noswapfile
+filetype off
 
 set encoding=utf8
 
@@ -31,12 +32,12 @@ au BufNewFile,BufRead *.less set filetype=css
 au BufNewFile,BufRead *.coffee set filetype=coffee
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"" Vundle 
+"" Vundle
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set rtp+=~/.vim/bundle/vundle/
+set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
-Plugin 'gmarik/vundle'
+Plugin 'VundleVim/Vundle.vim'
 
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'vim-airline/vim-airline'
@@ -62,7 +63,7 @@ call vundle#end()            " required
 filetype plugin indent on    " required
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"" Vim UI 
+"" Vim UI
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Powerline Font for MacVim
 set guifont=Menlo\ For\ Powerline
@@ -104,13 +105,13 @@ colorscheme solarized
 set display+=lastline
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"" Aliases 
+"" Aliases
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 :command W w
 :command Q q
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"" Scrolling 
+"" Scrolling
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set scrolloff=8
 set sidescrolloff=15
