@@ -47,17 +47,19 @@ Plugin 'vim-syntastic/syntastic'
 Plugin 'sheerun/vim-polyglot'
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'scrooloose/nerdtree'
+Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'groenewege/vim-less'
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'mileszs/ack.vim'
 Plugin 'nerdtree-ack'
 Plugin 'tpope/vim-fugitive'
-Plugin 'kchmck/vim-coffee-script'
-Plugin 'jgdavey/tslime.vim'
 Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'tomtom/tlib_vim'
 Plugin 'garbas/vim-snipmate'
 Plugin 'honza/vim-snippets'
+Plugin 'kien/ctrlp.vim'
+Plugin 'airblade/vim-gitgutter'
+
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -105,12 +107,6 @@ colorscheme solarized
 set display+=lastline
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"" Aliases
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-:command W w
-:command Q q
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" Scrolling
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set scrolloff=8
@@ -131,12 +127,20 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_javascript_checkers = ['eslint']
 
+" CtrlP
+let g:ctrlp_map = '<c-t>'
+let g:ctrlp_working_path_mode = 'r'
+let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
+
+" Indent Guide
+"let g:indent_guides_enable_on_vim_startup=1
+
 " NERDTree settings
 noremap <leader>n :NERDTree <CR>
 
 " Buffer Switching
-:nnoremap <C-n> :bnext<CR>
-:nnoremap <C-p> :bprevious<CR>
+:noremap <C-n> :bnext<CR>
+:noremap <C-p> :bprevious<CR>
 
 " Insert a single character in normal mode with <Space>
 :nmap <Space> i_<Esc>r
