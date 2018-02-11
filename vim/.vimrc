@@ -26,10 +26,13 @@ set expandtab
 set backspace=indent,eol,start
 set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
 
+set hidden
+
 filetype off
 filetype plugin indent on
 au BufNewFile,BufRead *.less set filetype=css
 au BufNewFile,BufRead *.coffee set filetype=coffee
+au BufNewFile,BufRead *.js set filetype=javascript.jsx
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" Vundle
@@ -40,10 +43,10 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 
 Plugin 'altercation/vim-colors-solarized'
+Plugin 'rakr/vim-one'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'ryanoasis/vim-devicons'
-Plugin 'vim-syntastic/syntastic'
 Plugin 'sheerun/vim-polyglot'
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'scrooloose/nerdtree'
@@ -59,7 +62,8 @@ Plugin 'garbas/vim-snipmate'
 Plugin 'honza/vim-snippets'
 Plugin 'kien/ctrlp.vim'
 Plugin 'airblade/vim-gitgutter'
-
+Plugin 'mxw/vim-jsx'
+Plugin 'w0rp/ale'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -73,6 +77,7 @@ set guifont=Menlo\ For\ Powerline
 " Airline
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
+let g:airline#extensions#ale#enabled = 1
 
 " Show the ruler bar at the bottom of the screen
 set ruler
@@ -113,19 +118,8 @@ set scrolloff=8
 set sidescrolloff=15
 set sidescroll=1
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"" Syntastic
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-"let g:syntastic_debug=3
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_javascript_checkers = ['eslint']
+" Vim JSX
+let g:jsx_ext_required = 0
 
 " CtrlP
 let g:ctrlp_map = '<c-t>'
@@ -141,6 +135,7 @@ noremap <leader>n :NERDTree <CR>
 " Buffer Switching
 :noremap <C-n> :bnext<CR>
 :noremap <C-p> :bprevious<CR>
+:nmap <leader>d :bnext<CR>:bdelete #<CR>
 
 " Insert a single character in normal mode with <Space>
 :nmap <Space> i_<Esc>r
