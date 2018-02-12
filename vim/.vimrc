@@ -23,6 +23,7 @@ set tabstop=2
 set softtabstop=2
 set shiftwidth=2
 set expandtab
+set nowrap
 set backspace=indent,eol,start
 set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
 
@@ -131,6 +132,7 @@ let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
 
 " NERDTree settings
 noremap <leader>n :NERDTree <CR>
+noremap <leader>m :NERDTreeFind <CR>
 
 " Buffer Switching
 :noremap <C-n> :bnext<CR>
