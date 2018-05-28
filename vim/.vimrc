@@ -22,7 +22,7 @@ set autoindent
 set tabstop=2
 set softtabstop=2
 set shiftwidth=2
-set expandtab
+set noexpandtab
 set nowrap
 set backspace=indent,eol,start
 set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
@@ -56,6 +56,7 @@ Plugin 'groenewege/vim-less'
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'mileszs/ack.vim'
 Plugin 'nerdtree-ack'
+Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-fugitive'
 Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'tomtom/tlib_vim'
@@ -65,6 +66,7 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'mxw/vim-jsx'
 Plugin 'w0rp/ale'
+Plugin 'terryma/vim-multiple-cursors'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -119,6 +121,12 @@ set scrolloff=8
 set sidescrolloff=15
 set sidescroll=1
 
+" ALE
+let g:ale_linters = { 'javascript': ['eslint'] }
+let g:ale_sign_error = '🤮'
+let g:ale_sign_warning = '🚩'
+let g:ale_statusline_format = ['🤮 %d', '🚩 %d', '']
+
 " Vim JSX
 let g:jsx_ext_required = 0
 
@@ -126,6 +134,13 @@ let g:jsx_ext_required = 0
 let g:ctrlp_map = '<c-t>'
 let g:ctrlp_working_path_mode = 'r'
 let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
+
+" Vim Multiple Cursors
+let g:multi_cursor_use_default_mapping=0
+let g:multi_cursor_next_key='<C-l>'
+let g:multi_cursor_prev_key='<C-h>'
+let g:multi_cursor_skip_key='<C-x>'
+let g:multi_cursor_quit_key='<Esc>'
 
 " Indent Guide
 "let g:indent_guides_enable_on_vim_startup=1
