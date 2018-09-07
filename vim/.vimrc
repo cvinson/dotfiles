@@ -22,7 +22,7 @@ set autoindent
 set tabstop=2
 set softtabstop=2
 set shiftwidth=2
-set noexpandtab
+set expandtab
 set nowrap
 set backspace=indent,eol,start
 set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
@@ -141,6 +141,9 @@ let g:multi_cursor_next_key='<C-l>'
 let g:multi_cursor_prev_key='<C-h>'
 let g:multi_cursor_skip_key='<C-x>'
 let g:multi_cursor_quit_key='<Esc>'
+
+" Vim Polyglot
+let g:polyglot_disabled = ['graphql']
 
 " Indent Guide
 "let g:indent_guides_enable_on_vim_startup=1
