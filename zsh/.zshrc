@@ -6,7 +6,7 @@ export ZSH="/Users/colin/.oh-my-zsh"
 
 ZSH_THEME="robbyrussell"
 
-lugins=(
+plugins=(
   git
 )
 
