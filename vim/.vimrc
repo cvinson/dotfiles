@@ -19,11 +19,13 @@ set encoding=utf8
 
 set nocompatible
 set autoindent
+set smartindent
 set tabstop=2
 set softtabstop=2
 set shiftwidth=2
 set expandtab
 set nowrap
+set cursorline
 set backspace=indent,eol,start
 set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
 
@@ -58,15 +60,21 @@ Plugin 'mileszs/ack.vim'
 Plugin 'nerdtree-ack'
 Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-surround'
 Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'tomtom/tlib_vim'
 Plugin 'garbas/vim-snipmate'
 Plugin 'honza/vim-snippets'
 Plugin 'kien/ctrlp.vim'
 Plugin 'airblade/vim-gitgutter'
-Plugin 'mxw/vim-jsx'
 Plugin 'w0rp/ale'
 Plugin 'terryma/vim-multiple-cursors'
+Plugin 'ahw/vim-pbcopy'
+Plugin 'vim-scripts/BufOnly.vim'
+Plugin 'pangloss/vim-javascript'
+Plugin 'mxw/vim-jsx'
+
+let g:polyglot_disabled = ['jsx', 'javascript']
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -109,7 +117,6 @@ set background=dark
 let g:solarized_termcolors = 256
 let g:solarized_visibility = 'high'
 let g:solarized_contrast = 'high'
-let g:indent_guides_auto_colors = 0
 colorscheme solarized
 
 set display+=lastline
@@ -146,7 +153,10 @@ let g:multi_cursor_quit_key='<Esc>'
 let g:polyglot_disabled = ['graphql']
 
 " Indent Guide
-"let g:indent_guides_enable_on_vim_startup=1
+let g:indent_guides_enable_on_vim_startup=1
+let g:indent_guides_auto_colors=0
+hi IndentGuidesOdd ctermbg=235
+hi IndentGuidesEven ctermbg=236
 
 " NERDTree settings
 noremap <leader>n :NERDTree <CR>
@@ -162,3 +172,6 @@ noremap <leader>m :NERDTreeFind <CR>
 
 " NERDTree Ignore some stuff.
 let NERDTreeIgnore=['\.pyc$', '\~$']
+
+" pbcopy integration
+let g:vim_pbcopy_local_cmd = "pbcopy"
