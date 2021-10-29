@@ -73,6 +73,8 @@ Plugin 'ahw/vim-pbcopy'
 Plugin 'vim-scripts/BufOnly.vim'
 Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
+Plugin 'prettier/vim-prettier'
+Plugin 'morhetz/gruvbox'
 
 let g:polyglot_disabled = ['jsx', 'javascript']
 
@@ -117,7 +119,8 @@ set background=dark
 let g:solarized_termcolors = 256
 let g:solarized_visibility = 'high'
 let g:solarized_contrast = 'high'
-colorscheme solarized
+" colorscheme solarized
+colorscheme gruvbox
 
 set display+=lastline
 
