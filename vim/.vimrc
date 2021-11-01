@@ -13,13 +13,10 @@ set history=1000
 set t_Co=256
 
 set noswapfile
-filetype off
 
 set encoding=utf8
 
 set nocompatible
-set autoindent
-set smartindent
 set tabstop=2
 set softtabstop=2
 set shiftwidth=2
@@ -31,8 +28,8 @@ set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
 
 set hidden
 
-filetype off
-filetype plugin indent on
+filetype on
+filetype indent on
 au BufNewFile,BufRead *.less set filetype=css
 au BufNewFile,BufRead *.coffee set filetype=coffee
 au BufNewFile,BufRead *.js set filetype=javascript.jsx
@@ -72,14 +69,13 @@ Plugin 'terryma/vim-multiple-cursors'
 Plugin 'ahw/vim-pbcopy'
 Plugin 'vim-scripts/BufOnly.vim'
 Plugin 'pangloss/vim-javascript'
-Plugin 'mxw/vim-jsx'
+Plugin 'MaxMEllon/vim-jsx-pretty'
 Plugin 'prettier/vim-prettier'
 Plugin 'morhetz/gruvbox'
 
 let g:polyglot_disabled = ['jsx', 'javascript']
 
 call vundle#end()            " required
-filetype plugin indent on    " required
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" Vim UI
