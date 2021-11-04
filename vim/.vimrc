@@ -174,3 +174,6 @@ let NERDTreeIgnore=['\.pyc$', '\~$']
 
 " pbcopy integration
 let g:vim_pbcopy_local_cmd = "pbcopy"
+
+"SnipMate
+let g:snipMate = { 'snippet_version' : 1 }
