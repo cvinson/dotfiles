@@ -72,6 +72,7 @@ Plugin 'pangloss/vim-javascript'
 Plugin 'MaxMEllon/vim-jsx-pretty'
 Plugin 'prettier/vim-prettier'
 Plugin 'morhetz/gruvbox'
+Plugin 'neoclide/coc.nvim', {'branch': 'master', 'do': 'yarn install --frozen-lockfile'}
 
 let g:polyglot_disabled = ['jsx', 'javascript']
 
@@ -175,5 +176,8 @@ let NERDTreeIgnore=['\.pyc$', '\~$']
 " pbcopy integration
 let g:vim_pbcopy_local_cmd = "pbcopy"
 
-"SnipMate
+" SnipMate
 let g:snipMate = { 'snippet_version' : 1 }
+
+" COC
+
