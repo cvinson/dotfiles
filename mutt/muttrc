@@ -1,0 +1,13 @@
+source "gpg -d ~/.config/mutt/passwords.gpg |"
+
+set imap_user = "cvinson86@gmail.com"
+set from = "cvinson86@gmail.com"
+set realname = "Colin Vinson"
+
+set editor = "vim"
+
+set folder = "imaps://imap.gmail.com:993"
+
+set spoolfile = "+Inbox"
+
+mailboxes =Inbox
