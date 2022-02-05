@@ -1,0 +1,63 @@
+source "gpg -d ~/.config/mutt/passwords.gpg |"
+source ~/.config/mutt/colors/gruvbox/colors-gruvbox-shuber.muttrc
+source ~/.config/mutt/colors/gruvbox/colors-gruvbox-shuber-extended.muttrc
+source powerline/powerline.neomuttrc
+
+set ssl_starttls = yes
+set ssl_force_tls = yes
+
+set from = "cvinson86@gmail.com"
+set realname = "Colin Vinson"
+
+set editor = "vim"
+
+set imap_user = "cvinson86@gmail.com"
+set folder = "imaps://imap.gmail.com:993"
+set smtp_url = "smtp://cvinson86@smtp.gmail.com:587/"
+set smtp_authenticators = 'gssapi:login'
+
+set spoolfile = "+INBOX"
+set record = ""
+set postponed = "+[Gmail]/Drafts"
+
+set move = no
+set sort = reverse-date
+
+set header_cache = "~/.config/mutt/cache/headers"
+set message_cachedir = "~/.config/mutt/cache/bodies"
+set certificate_file = "~/.config/mutt/certificates"
+
+mailboxes =INBOX =[Gmail]/Sent\ Mail =[Gmail]/Drafts =[Gmail]/Spam =[Gmail]/All\ Mail =[Gmail]/Trash
+
+set timeout = 10
+set new_mail_command="terminal-notifier -title '%v' -subtitle 'New Mail in %f' -message '%n new messages, %u unread.' -activate 'com.apple.Terminal' -sound default"
+
+set date_format="%y/%m/%d %I:%M%p"
+set index_format="%2C %Z %?X?A& ?  %D    %-15.15F   %s (%-4.4c)"
+
+# Sidebar
+set sidebar_visible = yes
+set sidebar_width = 30
+set sidebar_format="%B %?N?(%N)"
+set mail_check_stats
+
+bind index,pager g noop
+bind index,pager m noop
+bind index,pager M noop
+
+bind index,pager \Cp sidebar-prev       # Ctrl-Shift-P - Previous Mailbox
+bind index,pager \Cn sidebar-next       # Ctrl-Shift-N - Next Mailbox
+bind index,pager \Co sidebar-open       # Ctrl-Shift-O - Open Highlighted Mailbox
+bind index G imap-fetch-mail
+bind index,pager M mail
+
+macro index,pager gi "<change-folder>=INBOX<enter>" "go to inbox"
+macro index,pager mi ";<save-message>=INBOX<enter>" "move mail to inbox"
+macro index,pager gd "<change-folder>=[Gmail]/Drafts<enter>" "go to drafts"
+macro index,pager md ";<save-message>=[Gmail]/Drafts<enter>" "move mail to drafts"
+macro index,pager gj "<change-folder>=[Gmail]/Spam<enter>" "go to junk"
+macro index,pager mj ";<save-message>=[Gmail]/Spam<enter>" "move mail to junk"
+macro index,pager gt "<change-folder>=[Gmail]/Trash<enter>" "go to trash"
+macro index,pager mt ";<save-message>=[Gmail]/Trash<enter>" "move mail to trash"
+macro index,pager gs "<change-folder>=[Gmail]/Sent%20Mail<enter>" "go to sent"
+macro index,pager ms ";<save-message>=[Gmail]/Sent%20Mail<enter>" "move mail to sent"

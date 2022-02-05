@@ -1,0 +1,3 @@
+text/html; luakit '%s' &; test=test -n "$DISPLAY"; needsterminal;
+text/html; lynx -dump %s; nametemplate=%s.html; copiousoutput;
+image/*; (clear && imgcat %s && read -N 1); needsterminal
