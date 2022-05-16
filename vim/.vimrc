@@ -27,6 +27,9 @@ set cursorline
 set backspace=indent,eol,start
 set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
 
+set foldmethod=indent
+au BufNewFile,BufRead * normal zR
+
 set shortmess+=c
 
 set hidden
@@ -50,7 +53,8 @@ Plugin 'rakr/vim-one'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'ryanoasis/vim-devicons'
-Plugin 'sheerun/vim-polyglot'
+Plugin 'jceb/vim-orgmode'
+" Plugin 'sheerun/vim-polyglot'
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'scrooloose/nerdtree'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
@@ -76,8 +80,7 @@ Plugin 'MaxMEllon/vim-jsx-pretty'
 Plugin 'prettier/vim-prettier'
 Plugin 'morhetz/gruvbox'
 Plugin 'neoclide/coc.nvim', {'branch': 'master', 'do': 'yarn install --frozen-lockfile'}
-
-let g:polyglot_disabled = ['jsx', 'javascript']
+Plugin 'mtth/scratch.vim'
 
 call vundle#end()            " required
 
@@ -113,6 +116,8 @@ set noerrorbells
 set novisualbell
 set t_vb=
 set tm=500
+
+let g:EasyMotion_verbose = 0
 
 syntax enable
 set background=dark
@@ -153,7 +158,7 @@ let g:multi_cursor_skip_key='<C-x>'
 let g:multi_cursor_quit_key='<Esc>'
 
 " Vim Polyglot
-let g:polyglot_disabled = ['graphql']
+let g:polyglot_disabled = ['jsx', 'javascript', 'markdown', 'graphql']
 
 " Indent Guide
 let g:indent_guides_enable_on_vim_startup=1
@@ -222,3 +227,9 @@ inoremap <C-k> <ESC>:m .-2<CR>==gi
 " Visual mode
 vnoremap <C-j> :m '>+1<CR>gv=gv
 vnoremap <C-k> :m '<-2<CR>gv=gv
+
+" Vimwiki
+let g:vimwiki_list = [{ "path": "~/Notes", "path_html": "~/Notes/export/html/" }]
+let wiki = {}
+let wiki.ext = '.md'
+let wiki.syntax = 'markdown'
