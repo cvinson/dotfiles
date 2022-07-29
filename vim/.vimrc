@@ -27,8 +27,8 @@ set cursorline
 set backspace=indent,eol,start
 set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
 
-set foldmethod=indent
-au BufNewFile,BufRead * normal zR
+"set foldmethod=indent
+"au BufNewFile,BufRead * normal zR
 
 set shortmess+=c
 
