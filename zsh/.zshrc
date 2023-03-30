@@ -4,10 +4,12 @@
 # Path to your oh-my-zsh installation.
 export ZSH="/Users/colinvinson/.oh-my-zsh"
 
-ZSH_THEME="robbyrussell"
+ZSH_THEME="gruvbox"
+SOLARIZED_THEME="dark"
 
 plugins=(
   git
+  zsh-autosuggestions
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -35,4 +37,12 @@ alias kill_md="launchctl unload /Library/LaunchAgents/com.microsoft.wdav.tray.pl
 
 alias music="cmus"
 
+alias e="nvim"
+
 bindkey -v
+export PATH="/opt/homebrew/opt/mongodb-community@4.4/bin:$PATH"
+
+# pnpm
+export PNPM_HOME="/Users/colinvinson/Library/pnpm"
+export PATH="$PNPM_HOME:$PATH"
+# pnpm end

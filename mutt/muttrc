@@ -1,6 +1,6 @@
-source "gpg -d ~/.config/mutt/passwords.gpg |"
-source ~/.config/mutt/colors/gruvbox/colors-gruvbox-shuber.muttrc
-source ~/.config/mutt/colors/gruvbox/colors-gruvbox-shuber-extended.muttrc
+# source "gpg -d ~/.config/neomutt/passwords.gpg |"
+source ~/.config/neomutt/colors/gruvbox/colors-gruvbox-shuber.muttrc
+source ~/.config/neomutt/colors/gruvbox/colors-gruvbox-shuber-extended.muttrc
 source powerline/powerline.neomuttrc
 
 set ssl_starttls = yes
@@ -12,6 +12,7 @@ set realname = "Colin Vinson"
 set editor = "vim"
 
 set imap_user = "cvinson86@gmail.com"
+set imap_pass="`gpg --batch -q --decrypt ~/.config/neomutt/passwords.gpg`"
 set folder = "imaps://imap.gmail.com:993"
 set smtp_url = "smtp://cvinson86@smtp.gmail.com:587/"
 set smtp_authenticators = 'gssapi:login'
@@ -23,9 +24,9 @@ set postponed = "+[Gmail]/Drafts"
 set move = no
 set sort = reverse-date
 
-set header_cache = "~/.config/mutt/cache/headers"
-set message_cachedir = "~/.config/mutt/cache/bodies"
-set certificate_file = "~/.config/mutt/certificates"
+set header_cache = "~/.config/neomutt/cache/headers"
+set message_cachedir = "~/.config/neomutt/cache/bodies"
+set certificate_file = "~/.config/neomutt/certificates"
 
 mailboxes =INBOX =[Gmail]/Sent\ Mail =[Gmail]/Drafts =[Gmail]/Spam =[Gmail]/All\ Mail =[Gmail]/Trash
 
@@ -61,3 +62,4 @@ macro index,pager gt "<change-folder>=[Gmail]/Trash<enter>" "go to trash"
 macro index,pager mt ";<save-message>=[Gmail]/Trash<enter>" "move mail to trash"
 macro index,pager gs "<change-folder>=[Gmail]/Sent%20Mail<enter>" "go to sent"
 macro index,pager ms ";<save-message>=[Gmail]/Sent%20Mail<enter>" "move mail to sent"
+macro index,pager y  ";:set comfirmappend=no resolve=no\n<clear-flag>N<save-message>=[Gmail]/All%20Mail<enter><enter>:set confirmappend=yes resolve=yes\n" "Archive"

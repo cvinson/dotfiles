@@ -17,7 +17,7 @@ set noswapfile
 
 set encoding=utf8
 
-set nocompatible
+"set nocompatible
 set tabstop=2
 set softtabstop=2
 set shiftwidth=2
@@ -26,6 +26,7 @@ set nowrap
 set cursorline
 set backspace=indent,eol,start
 set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
+set switchbuf=useopen,usetab
 
 "set foldmethod=indent
 "au BufNewFile,BufRead * normal zR
@@ -54,7 +55,6 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'ryanoasis/vim-devicons'
 Plugin 'jceb/vim-orgmode'
-" Plugin 'sheerun/vim-polyglot'
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'scrooloose/nerdtree'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
@@ -71,7 +71,7 @@ Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 Plugin 'kien/ctrlp.vim'
 Plugin 'airblade/vim-gitgutter'
-Plugin 'w0rp/ale'
+"Plugin 'w0rp/ale'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'ahw/vim-pbcopy'
 Plugin 'vim-scripts/BufOnly.vim'
@@ -81,6 +81,7 @@ Plugin 'prettier/vim-prettier'
 Plugin 'morhetz/gruvbox'
 Plugin 'neoclide/coc.nvim', {'branch': 'master', 'do': 'yarn install --frozen-lockfile'}
 Plugin 'mtth/scratch.vim'
+Plugin 'kchmck/vim-coffee-script'
 
 call vundle#end()            " required
 
@@ -137,10 +138,10 @@ set sidescrolloff=15
 set sidescroll=1
 
 " ALE
-let g:ale_linters = { 'javascript': ['eslint'] }
-let g:ale_sign_error = '🤮'
-let g:ale_sign_warning = '🚩'
-let g:ale_statusline_format = ['🤮 %d', '🚩 %d', '']
+"let g:ale_linters = { 'javascript': ['eslint'] }
+"let g:ale_sign_error = '🤮'
+"let g:ale_sign_warning = '🚩'
+"let g:ale_statusline_format = ['🤮 %d', '🚩 %d', '']
 
 " Vim JSX
 let g:jsx_ext_required = 0
@@ -149,6 +150,7 @@ let g:jsx_ext_required = 0
 let g:ctrlp_map = '<c-t>'
 let g:ctrlp_working_path_mode = 'r'
 let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
+let g:ctrlp_show_hidden = 1
 
 " Vim Multiple Cursors
 let g:multi_cursor_use_default_mapping=0
@@ -167,6 +169,7 @@ hi IndentGuidesOdd ctermbg=235
 hi IndentGuidesEven ctermbg=236
 
 " NERDTree settings
+let g:NERDTreeMinimalMenu=1
 noremap <leader>n :NERDTree <CR>
 noremap <leader>m :NERDTreeFind <CR>
 
@@ -187,23 +190,39 @@ let g:vim_pbcopy_local_cmd = "pbcopy"
 " SnipMate
 let g:snipMate = { 'snippet_version' : 1 }
 
-" UltiSnip
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsListSnippets="<c-l>"
-
 " COC
-" Use tab for trigger completion with characters ahead and navigate.
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? coc#_select_confirm() :
-      \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+let g:coc_global_extensions = ['coc-json', 'coc-eslint', 'coc-tsserver', 'coc-snippets']
+let g:coc_node_path= '~/.nvm/versions/node/v16.15.0/bin/node'
 
-function! s:check_back_space() abort
+set signcolumn=yes
+
+inoremap <silent><expr> <TAB>
+      \ coc#pum#visible() ? coc#pum#next(1) :
+      \ CheckBackspace() ? "\<Tab>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
+
+" Make <CR> to accept selected completion item or notify coc.nvim to format
+" <C-g>u breaks current undo, please make your own choice.
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
+function! CheckBackspace() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
+
+" Use <c-space> to trigger completion.
+if has('nvim')
+  inoremap <silent><expr> <c-space> coc#refresh()
+else
+  inoremap <silent><expr> <c-@> coc#refresh()
+endif
+
+" Use `[g` and `]g` to navigate diagnostics
+" Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
 
 " GoTo code navigation.
 nmap <silent> gd <Plug>(coc-definition)
@@ -212,7 +231,22 @@ nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
 " Use K to show documentation in preview window.
-nnoremap <silent> K :call <SID>show_documentation()<CR>
+nnoremap <silent> K :call ShowDocumentation()<CR>
+
+function! ShowDocumentation()
+  if CocAction('hasProvider', 'hover')
+    call CocActionAsync('doHover')
+  else
+    call feedkeys('K', 'in')
+  endif
+endfunction
+
+" Highlight the symbol and its references when holding the cursor.
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+" Symbol renaming.
+nmap <leader>rn <Plug>(coc-rename)
+
 
 " Move lines
 "
@@ -233,3 +267,6 @@ let g:vimwiki_list = [{ "path": "~/Notes", "path_html": "~/Notes/export/html/" }
 let wiki = {}
 let wiki.ext = '.md'
 let wiki.syntax = 'markdown'
+
+let g:loaded_ruby_provider = 0
+let g:loaded_perl_provider = 0
