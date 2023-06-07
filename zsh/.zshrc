@@ -33,11 +33,19 @@ add-zsh-hook chpwd load-nvmrc
 load-nvmrc
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
+export FZF_DEFAULT_OPTS="
+	--color=fg:#908caa,bg:#232136,hl:#ea9a97
+	--color=fg+:#e0def4,bg+:#393552,hl+:#ea9a97
+	--color=border:#44415a,header:#3e8fb0,gutter:#232136
+	--color=spinner:#f6c177,info:#9ccfd8,separator:#44415a
+	--color=pointer:#c4a7e7,marker:#eb6f92,prompt:#908caa"
+
 alias kill_md="launchctl unload /Library/LaunchAgents/com.microsoft.wdav.tray.plist"
 
 alias music="cmus"
 
 alias e="nvim"
+alias ef="e \$(rg --files | fzf)"
 
 bindkey -v
 export PATH="/opt/homebrew/opt/mongodb-community@4.4/bin:$PATH"
