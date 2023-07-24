@@ -1,6 +1,8 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
+source ~/.zsh_env_vars
+
 # Path to your oh-my-zsh installation.
 export ZSH="/Users/colinvinson/.oh-my-zsh"
 
@@ -47,7 +49,18 @@ alias music="cmus"
 alias e="nvim"
 alias ef="e \$(rg --files | fzf)"
 
+# VI Mode
 bindkey -v
+
+# Yank to the system clipboard
+function vi-yank-xclip {
+    zle vi-yank
+   echo "$CUTBUFFER" | pbcopy -i
+}
+
+zle -N vi-yank-xclip
+bindkey -M vicmd 'y' vi-yank-xclip
+
 export PATH="/opt/homebrew/opt/mongodb-community@4.4/bin:$PATH"
 
 # pnpm
