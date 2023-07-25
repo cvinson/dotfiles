@@ -49,6 +49,8 @@ alias music="cmus"
 alias e="nvim"
 alias ef="e \$(rg --files | fzf)"
 
+alias cat="bat"
+
 # VI Mode
 bindkey -v
 
