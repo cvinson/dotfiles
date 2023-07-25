@@ -4,7 +4,7 @@
 source ~/.zsh_env_vars
 
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/colinvinson/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 
 ZSH_THEME="gruvbox"
 SOLARIZED_THEME="dark"
@@ -64,6 +64,6 @@ bindkey -M vicmd 'y' vi-yank-xclip
 export PATH="/opt/homebrew/opt/mongodb-community@4.4/bin:$PATH"
 
 # pnpm
-export PNPM_HOME="/Users/colinvinson/Library/pnpm"
+export PNPM_HOME="$HOME/Library/pnpm"
 export PATH="$PNPM_HOME:$PATH"
 # pnpm end
