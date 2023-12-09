@@ -16,7 +16,8 @@ plugins=(
 
 source $ZSH/oh-my-zsh.sh
 
-alias gp="git checkout master && git branch --merged > /tmp/merged-branches && vim /tmp/merged-branches && xargs git branch -d < /tmp/merged-branches"
+alias gpa="git checkout master && git branch --list > /tmp/all-branches && vim /tmp/all-branches && xargs git branch -D < /tmp/all-branches"
+alias gpm="git checkout master && git branch --merged > /tmp/merged-branches && vim /tmp/merged-branches && xargs git branch -d < /tmp/merged-branches"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
