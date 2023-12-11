@@ -6,7 +6,7 @@ source ~/.zsh_env_vars
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
-ZSH_THEME="gruvbox"
+ZSH_THEME="robbyrussell"
 SOLARIZED_THEME="dark"
 
 plugins=(
