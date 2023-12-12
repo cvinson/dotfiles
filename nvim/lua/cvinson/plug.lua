@@ -44,6 +44,11 @@ local plugins = {
   --
   { 'norcalli/nvim-colorizer.lua' },
   { 'lukas-reineke/indent-blankline.nvim' },
+
+  -- Telescope
+  { 'nvim-telescope/telescope.nvim', tag = '0.1.5',
+    dependencies = { 'nvim-lua/plenary.nvim', 'BurntSushi/ripgrep' }
+  }
 }
 
 -- { 'iamcco/markdown-preview.nvim', { ['do'] = vim.fn['cd app && yarn install'] } }
