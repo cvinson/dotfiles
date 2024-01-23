@@ -21,4 +21,12 @@ cmp.setup({
     ['<tab>'] = cmp.mapping.confirm({ select = true }),
     ['<C-Space>'] = cmp.mapping.complete(),
   }),
+  window = {
+    completion = cmp.config.window.bordered({
+      winhighlight = 'Normal:Pmenu',
+    }),
+    documentation = cmp.config.window.bordered({
+      winhighlight = 'Normal:Pmenu',
+    }),
+  }
 })
