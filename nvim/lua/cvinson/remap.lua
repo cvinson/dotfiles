@@ -35,6 +35,8 @@ lsp_zero.on_attach(function(_, bufnr)
   lsp_zero.default_keymaps({buffer = bufnr})
 end)
 
+vim.keymap.set("n", "<leader>e", ":TroubleToggle<CR>")
+
 local ts_builtin = require('telescope.builtin')
 
 vim.keymap.set("n", "<C-t>", ts_builtin.git_files, {})

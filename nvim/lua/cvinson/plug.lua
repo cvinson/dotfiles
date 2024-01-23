@@ -40,6 +40,7 @@ local plugins = {
       "rafamadriz/friendly-snippets"
     }
   },
+  { 'folke/trouble.nvim', dependencies = 'nvim-tree/nvim-web-devicons' },
 
   -- Git
   { 'tpope/vim-fugitive' },
