@@ -12,6 +12,5 @@ vim.opt.smartindent = true
 vim.opt.softtabstop = 2
 vim.opt.swapfile = false
 vim.opt.tabstop = 2
-vim.opt.termguicolors = true
 vim.opt.ttimeoutlen = 0
 

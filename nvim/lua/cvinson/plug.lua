@@ -1,23 +1,64 @@
-local Plug = vim.fn['plug#']
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 
-vim.call('plug#begin')
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable", -- latest stable release
+    lazypath,
+  })
+end
 
-Plug('junegunn/fzf', { ['do'] = vim.fn['fzf#install'] })
-Plug 'junegunn/fzf.vim'
-Plug 'tpope/vim-fugitive'
-Plug 'nvim-tree/nvim-web-devicons'
-Plug 'nvim-tree/nvim-tree.lua'
-Plug('nvim-treesitter/nvim-treesitter', { ['do'] = vim.fn[':TSUpdate'] })
-Plug 'kchmck/vim-coffee-script'
-Plug('neoclide/coc.nvim', { branch = 'release' })
-Plug 'nvim-lualine/lualine.nvim'
-Plug('akinsho/bufferline.nvim', { tag = 'v3.*' })
-Plug 'vim-scripts/BufOnly.vim'
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-commentary'
-Plug('iamcco/markdown-preview.nvim', { ['do'] = vim.fn['cd app && yarn install'] })
-Plug 'rose-pine/neovim'
-Plug 'norcalli/nvim-colorizer.lua'
-Plug 'lukas-reineke/indent-blankline.nvim'
+vim.opt.rtp:prepend(lazypath)
 
-vim.call('plug#end')
+local plugins = {
+  { 'folke/lazy.nvim' },
+
+  -- Colorschemes
+	{ 'rose-pine/neovim' },
+
+  -- Utils
+  { 'nvim-tree/nvim-tree.lua' },
+  { 'nvim-tree/nvim-web-devicons' },
+  { 'nvim-treesitter/nvim-treesitter', build = ':TSUpdate' },
+  { 'nvim-lualine/lualine.nvim' },
+  { 'akinsho/bufferline.nvim', version = "*", dependencies = 'nvim-tree/nvim-web-devicons' },
+  { 'vim-scripts/BufOnly.vim' },
+
+  -- LSP
+  { 'williamboman/mason.nvim' },
+  { 'williamboman/mason-lspconfig.nvim' },
+  { 'VonHeikemen/lsp-zero.nvim', branch = 'v3.x' },
+  { 'neovim/nvim-lspconfig' },
+  { 'hrsh7th/cmp-nvim-lsp' },
+  { 'hrsh7th/nvim-cmp' },
+  { 'L3MON4D3/LuaSnip',
+    dependencies = {
+      "saadparwaiz1/cmp_luasnip",
+      "rafamadriz/friendly-snippets"
+    }
+  },
+  { 'folke/trouble.nvim', dependencies = 'nvim-tree/nvim-web-devicons' },
+
+  -- Git
+  { 'tpope/vim-fugitive' },
+  { 'tpope/vim-surround' },
+  { 'tpope/vim-commentary' },
+
+  --
+  { 'norcalli/nvim-colorizer.lua' },
+  { 'lukas-reineke/indent-blankline.nvim' },
+
+  -- Telescope
+  { 'nvim-telescope/telescope.nvim', tag = '0.1.5',
+    dependencies = { 'nvim-lua/plenary.nvim', 'BurntSushi/ripgrep' }
+  }
+}
+
+-- { 'iamcco/markdown-preview.nvim', { ['do'] = vim.fn['cd app && yarn install'] } }
+
+local opts = { }
+
+require("lazy").setup(plugins, opts)
