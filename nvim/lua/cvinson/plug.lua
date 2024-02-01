@@ -56,7 +56,8 @@ local plugins = {
     dependencies = { 'nvim-lua/plenary.nvim', 'BurntSushi/ripgrep' }
   },
 
-  { "lukas-reineke/indent-blankline.nvim", main = "ibl", opts = {} }
+  { "lukas-reineke/indent-blankline.nvim", main = "ibl", opts = {} },
+  { "christoomey/vim-tmux-navigator" },
 }
 
 -- { 'iamcco/markdown-preview.nvim', { ['do'] = vim.fn['cd app && yarn install'] } }
