@@ -1,4 +1,7 @@
 vim.g.mapleader = " "
+
+vim.api.nvim_create_user_command("W", ":write", { bang = true, desc = "Write the file" })
+
 vim.keymap.set("n", "<leader>c", ":noh<CR>")
 vim.keymap.set("n", "<leader>h", ":e ~/.config/nvim/cheatsheet.md<CR>")
 vim.keymap.set("n", "<leader>pv", ":Ex<CR>")
