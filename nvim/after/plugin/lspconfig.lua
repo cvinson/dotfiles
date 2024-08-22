@@ -13,3 +13,11 @@ lspconfig.lua_ls.setup({
 lspconfig.gopls.setup({})
 
 lspconfig.jedi_language_server.setup({})
+
+lspconfig.tsserver.setup({
+  init_options = {
+    preferences = {
+      disable_suggestions = true;
+    }
+  }
+})

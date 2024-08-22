@@ -17,30 +17,32 @@ local plugins = {
   { 'folke/lazy.nvim' },
 
   -- Colorschemes
-	{ 'rose-pine/neovim' },
+  { 'rose-pine/neovim' },
 
   -- Utils
   { 'nvim-tree/nvim-tree.lua' },
   { 'nvim-tree/nvim-web-devicons' },
-  { 'nvim-treesitter/nvim-treesitter', build = ':TSUpdate' },
+  { 'nvim-treesitter/nvim-treesitter',  build = ':TSUpdate' },
   { 'nvim-lualine/lualine.nvim' },
-  { 'akinsho/bufferline.nvim', version = "*", dependencies = 'nvim-tree/nvim-web-devicons' },
+  { 'akinsho/bufferline.nvim',          version = "*",      dependencies = 'nvim-tree/nvim-web-devicons' },
   { 'vim-scripts/BufOnly.vim' },
 
   -- LSP
   { 'williamboman/mason.nvim' },
   { 'williamboman/mason-lspconfig.nvim' },
-  { 'VonHeikemen/lsp-zero.nvim', branch = 'v3.x' },
+  { 'VonHeikemen/lsp-zero.nvim',        branch = 'v3.x' },
   { 'neovim/nvim-lspconfig' },
   { 'hrsh7th/cmp-nvim-lsp' },
   { 'hrsh7th/nvim-cmp' },
-  { 'L3MON4D3/LuaSnip',
+  {
+    'L3MON4D3/LuaSnip',
     dependencies = {
       "saadparwaiz1/cmp_luasnip",
       "rafamadriz/friendly-snippets"
     }
   },
-  { 'folke/trouble.nvim', dependencies = 'nvim-tree/nvim-web-devicons' },
+  { 'folke/trouble.nvim',                 dependencies = 'nvim-tree/nvim-web-devicons' },
+  { 'stevearc/conform.nvim',              opts = {} },
 
   -- Git
   { 'tpope/vim-fugitive' },
@@ -52,16 +54,22 @@ local plugins = {
   { 'lukas-reineke/indent-blankline.nvim' },
 
   -- Telescope
-  { 'nvim-telescope/telescope.nvim', tag = '0.1.5',
+  {
+    'nvim-telescope/telescope.nvim',
+    tag = '0.1.5',
     dependencies = { 'nvim-lua/plenary.nvim', 'BurntSushi/ripgrep' }
   },
 
-  { "lukas-reineke/indent-blankline.nvim", main = "ibl", opts = {} },
-  { "christoomey/vim-tmux-navigator" },
+  { 'lukas-reineke/indent-blankline.nvim', main = 'ibl', opts = {} },
+  { 'christoomey/vim-tmux-navigator' },
+
+  -- { 'zbirenbaum/copilot.lua',              cmd = 'Copilot', event = 'InsertEnter' },
+  -- { 'zbirenbaum/copilot-cmp' },
+  { 'prettier/vim-prettier' },
 }
 
 -- { 'iamcco/markdown-preview.nvim', { ['do'] = vim.fn['cd app && yarn install'] } }
 
-local opts = { }
+local opts = {}
 
 require("lazy").setup(plugins, opts)
