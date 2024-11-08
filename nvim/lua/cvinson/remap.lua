@@ -40,7 +40,9 @@ lsp_zero.on_attach(function(_, bufnr)
 end)
 
 vim.keymap.set("n", "<leader>rl", "<cmd>lua vim.g.cmptoggle = not vim.g.cmptoggle<CR>", { desc = "toggle nvim-cmp" })
-vim.keymap.set("n", "<leader>e", ":TroubleToggle<CR>")
+vim.keymap.set("n", "<leader>ee", "<cmd>Trouble diagnostics toggle filter.buf=0<CR>")
+vim.keymap.set("n", "<leader>ea", "<cmd>Trouble diagnostics toggle<CR>")
+vim.keymap.set("n", "<leader>eq", "<cmd>Trouble qflist toggle<CR>")
 vim.keymap.set("n", "<leader>gp", vim.lsp.buf.hover)
 
 local ts_builtin = require('telescope.builtin')
