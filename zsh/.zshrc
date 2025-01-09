@@ -8,9 +8,14 @@ export ZSH="$HOME/.oh-my-zsh"
 
 ZSH_THEME="robbyrussell"
 SOLARIZED_THEME="dark"
+FZF_BASE="/opt/homebrew/opt/fzf"
+autoload -U compinit; compinit
+eval "$(fzf --zsh)"
 
 plugins=(
   git
+  fzf
+  fzf-tab
   zsh-autosuggestions
 )
 
@@ -65,8 +70,15 @@ zle -N vi-yank-xclip
 bindkey -M vicmd 'y' vi-yank-xclip
 
 export PATH="/opt/homebrew/opt/mongodb-community@4.4/bin:$PATH"
+export PYTHONPATH="$PYTHONPATH:$(brew --prefix)/opt/notmuch/lib/python3.12/site-packages"
 
 # pnpm
 export PNPM_HOME="$HOME/Library/pnpm"
 export PATH="$PNPM_HOME:$PATH"
 # pnpm end
+export PATH="/opt/homebrew/opt/avr-gcc@8/bin:$PATH"
+
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+

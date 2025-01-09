@@ -1,7 +1,7 @@
 # source "gpg -d ~/.config/neomutt/passwords.gpg |"
-source ~/.config/neomutt/colors/gruvbox/colors-gruvbox-shuber.muttrc
-source ~/.config/neomutt/colors/gruvbox/colors-gruvbox-shuber-extended.muttrc
-source powerline/powerline.neomuttrc
+# source ~/.config/neomutt/colors/gruvbox/colors-gruvbox-shuber.muttrc
+# source ~/.config/neomutt/colors/gruvbox/colors-gruvbox-shuber-extended.muttrc
+# source powerline/powerline.neomuttrc
 
 set ssl_starttls = yes
 set ssl_force_tls = yes
@@ -9,13 +9,14 @@ set ssl_force_tls = yes
 set from = "cvinson86@gmail.com"
 set realname = "Colin Vinson"
 
-set editor = "vim"
+set editor = "nvim"
 
 set imap_user = "cvinson86@gmail.com"
-set imap_pass="`gpg --batch -q --decrypt ~/.config/neomutt/passwords.gpg`"
+set imap_pass = "`/usr/bin/security find-generic-password -w -a 'cvinson86@gmail.com' -s 'Gmail'`"
 set folder = "imaps://imap.gmail.com:993"
 set smtp_url = "smtp://cvinson86@smtp.gmail.com:587/"
-set smtp_authenticators = 'gssapi:login'
+set smtp_pass = "`/usr/bin/security find-generic-password -w -a 'cvinson86@gmail.com' -s 'Gmail'`"
+set smtp_authenticators = "login"
 
 set spoolfile = "+INBOX"
 set record = ""
@@ -39,7 +40,7 @@ set index_format="%2C %Z %?X?A& ?  %D    %-15.15F   %s (%-4.4c)"
 # Sidebar
 set sidebar_visible = yes
 set sidebar_width = 30
-set sidebar_format="%B %?N?(%N)"
+# set sidebar_format="%B %?N?(%N)"
 set mail_check_stats
 
 bind index,pager g noop
