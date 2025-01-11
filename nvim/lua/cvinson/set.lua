@@ -3,7 +3,7 @@ vim.cmd.colorscheme("rose-pine")
 vim.opt.colorcolumn = "120"
 vim.opt.expandtab = true
 vim.opt.guicursor = ""
-vim.opt.guifont = { "FiraCode Nerd Font Mono", "h11" }
+vim.opt.guifont = { "JetBrainsMono Nerd Font", "h11" }
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.scrolloff = 8

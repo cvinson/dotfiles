@@ -1,0 +1,79 @@
+@import "./rose-pine.css";
+
+* {
+	font-size: 12px;
+	font-family: monospace;
+}
+
+window#waybar {
+	background: @base;
+	color: @text;
+}
+
+#custom-right-arrow-dark,
+#custom-left-arrow-dark {
+	color: #1a1a1a;
+}
+#custom-right-arrow-light,
+#custom-left-arrow-light {
+	color: #292b2e;
+	background: #1a1a1a;
+}
+
+#workspaces,
+#clock.1,
+#clock.2,
+#clock.3,
+#pulseaudio,
+#memory,
+#cpu,
+#battery,
+#disk,
+#tray {
+	background: #1a1a1a;
+}
+
+#workspaces button {
+	padding: 0 2px;
+	color: #fdf6e3;
+  border: 2px solid @base;
+}
+#workspaces button.focused {
+	color: #268bd2;
+}
+#workspaces button:hover {
+	box-shadow: inherit;
+	text-shadow: inherit;
+}
+#workspaces button:hover {
+	background: #1a1a1a;
+	border: #1a1a1a;
+	padding: 0 3px;
+}
+
+#workspaces button.active {
+  border: 2px solid @iris;
+}
+
+#pulseaudio {
+	color: @foam;
+}
+#memory {
+	color: @pine;
+}
+#cpu {
+	color: @iris;
+}
+#battery {
+	color: @love;
+}
+
+#clock,
+#pulseaudio,
+#memory,
+#cpu,
+#battery,
+#disk {
+	padding: 0 10px;
+}
+

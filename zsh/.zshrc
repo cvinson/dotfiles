@@ -1,5 +1,6 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH=$HOME/.local/bin:$PATH
 
 source ~/.zsh_env_vars
 
@@ -51,6 +52,7 @@ alias e="nvim"
 alias ef="e \$(rg --files | fzf)"
 
 alias cat="bat"
+alias copy="xsel -ib"
 
 # VI Mode
 bindkey -v
