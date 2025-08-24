@@ -1,0 +1,1 @@
+teams --enable-features=UseOzonePlatform,WaylandWindowDecorations --ozone-platform-hint=auto
